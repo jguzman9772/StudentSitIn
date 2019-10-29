@@ -1,6 +1,6 @@
 ---
 title: "Student Sit In"
-author: "your name here"
+author: "Jose Guzman"
 date: "10/26/2019"
 output: 
   html_document:
@@ -22,7 +22,7 @@ Students at UCD- is there a relation between where one sits and one's major?
 
 <!-- where is the data found?  Is this an experiment or an observational study?  !-->
 
-Data from this study came from... 
+Data from this study came from a study of 173 students at UC David.
 
 
 
@@ -44,6 +44,7 @@ UCDdataframe = data.frame(seat=ucdavis1$Seat, major=ucdavis1$class, data=ucdavis
 names(UCDdataframe)
 ```
 ## Methods
+Both variables in this are categorical. We will us a bar chart to show the graphical data, a cross table to show the numerical summary, and a Chi- Squared test to show the inferential results. 
 
 <!--  describe analysis methods here 
 what are the variable types, and indicate gaphical, numerical, and inferential methods appropriate
@@ -56,35 +57,39 @@ for this question  !-->
 put the graphic description of the data here
 
 ```{r}
-
+barchartGC(~ seat+major,data=UCDdataframe)
 ```
 
-Explain what the graph shows
+
+The graph is showing that a majority of the non liberal arts students prefer to be seated in the middle. The more of the liberal arts students prefer to be seated in the middle than the front and back.  
 
 
 **Numerical summary**
 put numerical summary here
 
 ```{r}
-
+tab=xtabs(~seat+major,data=UCDdataframe)
+print(tab)
 ```
 
-Explain what the numeric summary says
+The numberical table suggests that liberal arts students prefer to sit in the middle and non liberal arts students prefer to sit in the middle. 
 
 ## Inferential Results
 put the inferential test for the the null hypothesis here
 
 ```{r}
-
+chisqtestGC(tab)
 ```
 
-what is the p-value?
+the P-Value is 0.2173
 
 ## Results and conclusions
 
-<!-- explain-- is there evidence that certain majors tend to sit in particular areas of the class?  Can the results of this test be generalized to all majors in all universities? !-->
+Since the P-Value is greater than .05, we reject the null hypothesis and conclude that there is not enough information to say that there is a relationship between the major of a student and where they prefer to sit. 
 
-explain the result, can the result be generalized?
+<!-- explain-- is there evidence that certain majors tend to sit in particular areas of the class?  Can the results of this test be generalized to all majors in all universities? !---
+
+
 
 <!--
 push results to your github account, turn in the URL
